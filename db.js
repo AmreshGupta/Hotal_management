@@ -1,15 +1,14 @@
 const mongoose = require("mongoose");
 //Define the mongoDb connection URL
-const mongoURl = "mongodb://127.0.0.1:27017";
-
+// const mongoURl = process.env.MONGODB_URL_LOCAL;
+require("dotenv").config();
+const mongoURl = process.env.MONGODB_URL;
 //set uo MongoDb connection
 mongoose.connect(mongoURl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-//get the defult connection
-//mongoose maintain a defult connection representing the mongoDb connection
 const db = mongoose.connection;
 
 //define event listener for database connection
